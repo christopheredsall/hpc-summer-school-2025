@@ -1,0 +1,56 @@
+---
+title: "Introduction to High Performance Computing"
+subtitle: "ICCS Summer School 2025"
+bibliography: references.bib
+format:
+  revealjs:
+    embed-resources: true
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    history: false
+    logo: imgs/iccs-logo.png 
+    theme: [dark, custom.scss]
+    render-on-save: true
+authors:
+  - name: Chris Edsall
+    affiliations: ICCS/Cambridge
+    orcid: 0000-0001-6863-2184§
+  
+revealjs-plugins:
+  - attribution
+---
+
+## FLOPS
+
+
+![](imgs/what-kind-flops-goose.jpg){width=65%}
+
+::: {.attribution}
+Image source: [Felix LeClair](https://bsky.app/profile/fclc.bsky.social/post/3lc4qpte3ys2o)
+:::
+
+## Contact {.smaller}
+
+For more information we can be reached at:
+
+:::: {.columns style="font-size: 60%"}
+::: {.column width="25%"}
+
+::: {.column width="25%"}
+
+{{< fa pencil >}} \ Chris Edsall
+
+{{< fa solid person-digging >}} \ [ICCS/UoCambridge](https://iccs.cam.ac.uk/about-us/our-team)
+
+{{< fa solid envelope >}} \ [cje57[AT]cam.ac.uk](mailto:cje57@cam.ac.uk)
+
+{{< fa brands github >}} \ [christopheredsall](https://github.com/christopheredsall)
+
+{{< fa brands mastodon >}} \ [\@hpcchris\@scholar.social](https://scholar.social/@hpcchris)
+
+:::
+
+::::
+
+You can also contact the ICCS, [make a resource allocation request](https://iccs.cam.ac.uk/resources-vesri-members/resource-allocation-process), or visit us at the [Summer School RSE Helpdesk](https://docs.google.com/spreadsheets/d/1WKZxp3nqpXrIRMRkfFzc71sos-UD-Uy1zeab0c1p7Xc/edit#gid=0).
