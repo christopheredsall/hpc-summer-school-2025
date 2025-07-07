@@ -281,6 +281,14 @@ SYCL
 Premature Optimization Is the Root of All Evil
 :::
 
+:::: {.columns}
+::: {.column width="50%"}
+:::
+::: {.column width="50%" style="text-align: right;"}
+Donald Knuth (1974)
+:::
+::::
+
 ## Profiling
 
 ::: {style="text-align:center;"}
