@@ -21,14 +21,269 @@ revealjs-plugins:
   - attribution
 ---
 
+## High Performance Computing
+
+Working definition:
+
+> A computing resource that is larger than can be provided by one laptop or server
+
+## Supercomputers and clusters
+
+### Supercomputer 
+
+One of the most performant computers in the world at a particular point in time.
+
+### Cluster
+
+An architecture for combining a number of servers, storage and networking to act on concert.
+
+Most supercomputers for the past few decades have been clusters.
+
+## Applications of HPC
+
+Why would I need a supercomputer?
+
+Three traditional applications:
+
+- Nuclear
+- Chemical
+- Climate / weather
+
+Now, AI
+
+## Floating Point
+
+Computer math is not people math
+
+```
+>>> 0.1 + 0.2
+```
+
+## Floating Point
+
+```
+>>> 0.1 + 0.2
+0.30000000000000004
+```
+
+## Floating Point
+
+- '60s and '70s many vendor implementations
+- Standardised in 1982 as IEEE 754
+
 ## FLOPS
 
+One FLOPS == one floating point operation per second.
+
+- TF terraflops
+- PF petaflops
+- EF exaflops
+
+Conventionally these are 64-bit ("double precision") FLOPS
+
+## "AI" FLOPS
+
+- smaller data formats
+  - float16
+  - bfloat16
+  - int8
+
+## FLOPS
 
 ![](imgs/what-kind-flops-goose.jpg){width=65%}
 
 ::: {.attribution}
 Image source: [Felix LeClair](https://bsky.app/profile/fclc.bsky.social/post/3lc4qpte3ys2o)
 :::
+
+## Benchmarks
+
+A benchmark is a particular known and specified workload which can be repeated on different systems and the performance compared.
+
+A typical weather related one is WRF running the CONUS 2.5km configuration.
+
+## HPL
+
+LINPACK is a software library for performing numerical linear algebra
+
+LINPACK makes use of the BLAS (Basic Linear Algebra Subprograms) libraries for performing basic vector and matrix operations.
+
+The LINPACK benchmarks appeared initially as part of the LINPACK user's manual. The parallel LINPACK benchmark implementation called HPL (High Performance Linpack) is used to benchmark and rank supercomputers for the TOP500 list.
+
+## Top500 list
+
+## Exercise 1
+
+Got to the Top500 site at https://top500.org/
+
+- Use the sublist generator to find the largest HPC systems in your country
+- What is the ratio of Rmax performance between the number 1 system in June 1993 and the June 2025 number 1 
+
+## Cluster architecture 
+
+Before we get to the computing infrastructure there is the underpinning building and plant (power, cooling) required
+
+## Nodes
+
+The name comes from the terminology of mathematical graphs - nodes and edges.
+
+You can think of a node as a single server - one computer that an instance of an operating system
+
+## Login Nodes
+
+These are your entry point on to the cluster
+
+Usually accessable from the outside world. 
+
+Often more than one (sometimes multiple login nodes use the same DNS name, e.g . ``login.hpc.cam.ac.uk``)
+
+Shared with multiple users.
+
+DO NOT RUN COMPUTE JOBS ON THE LOGIN NODE
+
+## Compute nodes
+
+These are the nodes that do the heavy lifting computing work.
+
+Normally managed by the job scheduler - you don't usually log in to them directly.
+
+Quite often for the exclusive use of one user for the duration of their job.
+
+N.B. On some clusters compute nodes can be of a different architecture to the login nodes.
+
+## Shared storage
+
+Compute nodes sometimes have on node disk storage.
+
+Ther is normally some large storage that is visible to all the compute nodes.
+
+Since this is a shared resource an anti-social user can affect the performnace of other users.
+
+## Interconnect
+
+Connects the compute nodes, login nodes and storage
+
+Usually faster (higher bandwidth, lower latency) than comoddity ethernet networking.
+
+It's what makes a supercomputer super.
+
+examples:
+- Infiniband
+- Omnipath
+- Slingshot
+
+## Connecting to CSD3 
+
+- Chrome extension https://chrome.google.com/webstore/detail/iodihamcpbpeioajjeobimgagajmlibd
+
+
+## The Command Line 
+
+- Not as discoverable as a GUI
+- You can't break the HPC system
+- You type a command with optional flags and optional arguments and press "Return"
+- The system may or may not give you any output
+
+## The Command Line resources
+
+- https://swcarpentry.github.io/shell-novice/
+- https://wizardzines.com/comics/every-core-unix-program-i-use/
+
+
+## The Scheduler
+
+The scheduler takes requests to run jobs with particular cluster resources, fits these in around other user's jobs according to some policy, launches the job, terminates the job if it is overrunning, does accounting.
+
+Examples:
+- PBSpro
+- Platform LSF
+- Flux
+- Slurm (today, on CSD3)
+
+## Job Scripts
+
+A shell script with shell comments that are directives to the sheduler about how the jobs should be run
+
+```bash
+#!/bin/bash
+#SBATCH --account=TRAINING-CPU 
+#SBATCH --reservation=
+#SBATCH --time=00:02:00
+#SBATCH --job-name=my-first-job
+
+echo "My first job - hooray"
+```
+
+## Submitting Jobs
+
+``sbatch job.sh``
+
+You will get back a Job ID.
+
+## Viewing the Queue
+
+- ``squeue``
+- ``squeue --me``
+
+## Job Output
+
+If you don't specify, by df
+
+## Exercise 2
+
+- Write a job script to echo "hello world"
+- Submit the job with ``sbatch``
+- See it in the queue with ``squeue --me`
+- Find the output in te directory you submitted it from ``ls -lrt``
+- Examine the output ``cat ``
+
+## modules
+
+## array jobs
+
+## workflows
+
+## programming HPC
+
+### single node
+
+OpenMP
+
+### distributed 
+
+### GPU
+
+CUDA
+HIP
+SYCL
+
+## the bad news amdhals law
+
+## the good news Metcalf's law
+
+## debugging
+
+## profiling
+
+## IO profiling with Darshan
+
+## Green
+
+## Applying for Resources
+
+- Incite
+- Euro JU
+
+## Further Resources 
+
+- Your local HPC support
+- HPC carpentry
+  - https://carpentries-incubator.github.io/hpc-intro/
+- ARCHER2
+  - https://www.archer2.ac.uk/training/materials/
+- ATPESC
+  - https://extremecomputingtraining.anl.gov/
+- SC, ISC Tutorials
 
 ## Contact {.smaller}
 
