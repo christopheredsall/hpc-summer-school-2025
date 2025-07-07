@@ -123,6 +123,10 @@ Got to the Top500 site at https://top500.org/
 
 Before we get to the computing infrastructure there is the underpinning building and plant (power, cooling) required
 
+## Cluster architecture
+
+![](imgs/Cluster.drawio.png)
+
 ## Nodes
 
 The name comes from the terminology of mathematical graphs - nodes and edges.
