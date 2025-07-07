@@ -124,6 +124,10 @@ Got to the Top500 site at https://top500.org/
 
 Before we get to the computing infrastructure there is the underpinning building and plant (power, cooling) required
 
+## Cluster architecture
+
+![](imgs/Cluster.drawio.png)
+
 ## Nodes
 
 The name comes from the terminology of mathematical graphs - nodes and edges.
@@ -175,8 +179,18 @@ examples:
 
 ## Connecting to CSD3 
 
-- Chrome extension https://chrome.google.com/webstore/detail/iodihamcpbpeioajjeobimgagajmlibd
+- SSH
+  - linux / mac should be built in
+  - Windows has openssh nowadays
+  - PuTTY
+  - MobaXTerm
+- [HPC Carpentry advice on connecting](https://carpentries-incubator.github.io/hpc-intro/11-connecting/index.html)
+- [Chrome extension for SSH](https://chrome.google.com/webstore/detail/iodihamcpbpeioajjeobimgagajmlibd)
 
+## Connecting to CSD3
+
+- host is ``login.hpc.cam.ac.uk``
+- [CSD3 Docs](https://docs.hpc.cam.ac.uk/hpc/user-guide/quickstart.html)
 
 ## The Command Line 
 
@@ -208,9 +222,11 @@ A shell script with shell comments that are directives to the sheduler about how
 ```bash
 #!/bin/bash
 #SBATCH --account=TRAINING-CPU 
-#SBATCH --reservation=
+#SBATCH --reservation=iccs-summer-school1
 #SBATCH --time=00:02:00
 #SBATCH --job-name=my-first-job
+#SBATCH --nodes=1
+#SBATCH --cores=1
 
 echo "My first job - hooray"
 ```
@@ -228,7 +244,10 @@ You will get back a Job ID.
 
 ## Job Output
 
-If you don't specify, by df
+If you don't specify, by default it will be called
+```slurm-<$JOBID>.out```
+
+To change this you can add an extra directive ``#SBATCH --output=``
 
 ## Exercise 2
 
@@ -236,7 +255,19 @@ If you don't specify, by df
 - Submit the job with ``sbatch``
 - See it in the queue with ``squeue --me`
 - Find the output in te directory you submitted it from ``ls -lrt``
-- Examine the output ``cat ``
+- Examine the output using ``cat ``
+
+## Exercise 3
+
+- add in the unix command ``sleep 60``
+- find you job in the queue with ``squeue --me``
+- kill it with ``scancel <JOBID>``
+
+## Exercise 4
+
+- change the sleep to 180 seconds
+- reduce the job request time to 1 minute
+- see what happens
 
 ## modules
 
@@ -245,18 +276,34 @@ If you don't specify, by df
 ## workflows
 
 ## programming HPC
-
 ### single node
 
-OpenMP
+- [OpenMP](https://www.openmp.org/) is a specification for parallel programming
+- Hardware independent by design (e.g., CPU, FPGA, GPU...)
+- **Shared memory** multiprocessing programming model
 
-### distributed 
+![](imgs/openmp-logo.png){width=65% fig-align="center"}
 
-### GPU
+## programming HPC
+### distributed (multi-node)
 
-CUDA
-HIP
-SYCL
+- MPI (Message Passing Interface)
+- One of the most common methods of distributed compute
+- **Distributed memory** multiprocessing programming model
+- Implementations (openMPI, MPICH, Intel MPI)
+
+## programming HPC
+### GPU offloading
+
+- There are a range of GPU offloading programming models
+- Vendor specific
+  - [CUDA](https://developer.nvidia.com/cuda-toolkit)
+  - [HIP](https://rocm.docs.amd.com/projects/HIP/en/docs-develop/what_is_hip.html)
+- Vendor agnostic
+  - [SYCL](https://www.khronos.org/sycl/)
+  - [kokkos](https://kokkos.org/kokkos-core-wiki/)
+  - openMP GPU offloading
+  - [openAcc](https://www.openacc.org/)
 
 ## the bad news amdhals law
 
