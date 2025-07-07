@@ -19,6 +19,7 @@ authors:
   
 revealjs-plugins:
   - attribution
+from: markdown+emoji
 ---
 
 ## High Performance Computing
@@ -263,7 +264,36 @@ SYCL
 
 ## debugging
 
-## profiling
+- Multiple strategies :mag::bug:
+  - `printf()`
+  - logging
+  - debuggers (`gdb`, `lldb`, linaro `ddt`...)
+- [gdb](https://www.sourceware.org/gdb/)
+  - available on most HPC systems
+  - works with C, C++, Fortran, Rust...
+  - Command-line interface
+- Debugging Course coming up next in this room!
+
+# Profiling
+
+::: {.callout-warning}
+## Warning!
+Premature Optimization Is the Root of All Evil
+:::
+
+## Profiling
+
+::: {style="text-align:center;"}
+![[JetBrains rust developer survey](https://www.jetbrains.com/lp/devecosystem-2023/rust/)](imgs/rust-dev-survey-profiling.png){width=50%}
+:::
+
+## Profiling
+
+- [Intel VTune](https://www.intel.com/content/www/us/en/docs/vtune-profiler/get-started-guide/2025-0/windows-os.html)
+- [Score-P](https://docs.olcf.ornl.gov/software/profiling/Scorep.html)
+- [TAU](https://www.cs.uoregon.edu/research/tau/about.php)
+- [HPCToolkit](https://hpctoolkit.org/)
+- [LIKWID](https://github.com/RRZE-HPC/likwid?tab=readme-ov-file)
 
 ## IO profiling with Darshan
 
