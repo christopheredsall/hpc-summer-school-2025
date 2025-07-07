@@ -244,18 +244,34 @@ If you don't specify, by df
 ## workflows
 
 ## programming HPC
-
 ### single node
 
-OpenMP
+- [OpenMP](https://www.openmp.org/) is a specification for parallel programming
+- Hardware independent by design (e.g., CPU, FPGA, GPU...)
+- **Shared memory** multiprocessing programming model
 
-### distributed 
+![](imgs/openmp-logo.png){width=65% fig-align="center"}
 
-### GPU
+## programming HPC
+### distributed (multi-node)
 
-CUDA
-HIP
-SYCL
+- MPI (Message Passing Interface)
+- One of the most common methods of distributed compute
+- **Distributed memory** multiprocessing programming model
+- Implementations (openMPI, MPICH, Intel MPI)
+
+## programming HPC
+### GPU offloading
+
+- There are a range of GPU offloading programming models
+- Vendor specific
+  - [CUDA](https://developer.nvidia.com/cuda-toolkit)
+  - [HIP](https://rocm.docs.amd.com/projects/HIP/en/docs-develop/what_is_hip.html)
+- Vendor agnostic
+  - [SYCL](https://www.khronos.org/sycl/)
+  - [kokkos](https://kokkos.org/kokkos-core-wiki/)
+  - openMP GPU offloading
+  - [openAcc](https://www.openacc.org/)
 
 ## the bad news amdhals law
 
