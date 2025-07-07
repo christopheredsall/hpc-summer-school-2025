@@ -329,6 +329,23 @@ hello from process 0
 hello from process 2
 ```
 
+---
+
+### OpenMP Scaling
+
+- Try running the `pi.c` example (in directory `example-code/`)
+- To compile `pi.c` use command:
+
+```{.bash}
+cd example-code
+gcc -fopenmp -O3 pi.c -o pi.exe
+```
+- What happens when you run with different numbers of threads?
+
+::: {.callout-note}
+## Note
+To change the number of threads we need to set environment variable `OMP_NUM_THREADS` e.g., `export OMP_NUM_THREADS=1` 
+:::
 
 ## programming HPC
 ### distributed (multi-node)
