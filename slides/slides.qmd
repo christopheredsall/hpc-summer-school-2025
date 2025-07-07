@@ -174,8 +174,18 @@ examples:
 
 ## Connecting to CSD3 
 
-- Chrome extension https://chrome.google.com/webstore/detail/iodihamcpbpeioajjeobimgagajmlibd
+- SSH
+  - linux / mac should be built in
+  - Windows has openssh nowadays
+  - PuTTY
+  - MobaXTerm
+- [HPC Carpentry advice on connecting](https://carpentries-incubator.github.io/hpc-intro/11-connecting/index.html)
+- [Chrome extension for SSH](https://chrome.google.com/webstore/detail/iodihamcpbpeioajjeobimgagajmlibd)
 
+## Connecting to CSD3
+
+- host is ``login.hpc.cam.ac.uk``
+- [CSD3 Docs](https://docs.hpc.cam.ac.uk/hpc/user-guide/quickstart.html)
 
 ## The Command Line 
 
