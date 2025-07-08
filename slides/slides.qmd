@@ -288,6 +288,68 @@ To change this you can add an extra directive ``#SBATCH --output=``
 
 ![](imgs/openmp-logo.png){width=65% fig-align="center"}
 
+---
+
+### hello OpenMP
+
+```{.c}
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+  #pragma omp parallel
+  {
+    int thread_id = omp_get_thread_num();
+    printf("Hello from thread %d\n", thread_id);
+  }
+  return 0;
+}
+```
+
+---
+
+### hello OpenMP
+
+What happens when we run the following code?
+
+```{.bash}
+$ gcc -fopenmp -O3 hello.c -o hello.exe
+$ ./hello.exe
+```
+
+---
+
+### hello OpenMP
+
+What happens when we run the following code?
+
+```{.bash}
+$ gcc -fopenmp -O3 hello.c -o hello.exe
+$ ./hello.exe
+hello from process 1
+hello from process 3
+hello from process 0
+hello from process 2
+```
+
+---
+
+### OpenMP Scaling
+
+- Try running the `pi.c` example (in directory `example-code/`)
+- To compile `pi.c` use command:
+
+```{.bash}
+cd example-code
+gcc -fopenmp -O3 pi.c -o pi.exe
+```
+- What happens when you run with different numbers of threads?
+
+::: {.callout-note}
+## Note
+To change the number of threads we need to set environment variable `OMP_NUM_THREADS` e.g., `export OMP_NUM_THREADS=1` 
+:::
+
 ## programming HPC
 ### distributed (multi-node)
 
