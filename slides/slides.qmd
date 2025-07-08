@@ -273,7 +273,25 @@ To change this you can add an extra directive ``#SBATCH --output=``
 - reduce the job request time to 1 minute
 - see what happens
 
-## modules
+## Environment Modules
+
+- Multiple versions of the same software can be installed and you can choose between them
+- Two implementations
+  - [Environment Modules](https://modules.readthedocs.io/en/latest/) (TCL)
+  - [LMod](https://lmod.readthedocs.io/en/latest/) (Lua)
+- Module names are **site specific**
+- Module output is on ``stderr`` (!)
+  - grep with ``module avail 2>&1 | grep the_thing``
+- If you load a module interactively remember to load it in a job script
+- Purge and only load the modules needed in the job script
+
+## Exercise 5
+
+- List the currently loaded modules ``module list``
+- List the available modules ``module avail``
+- Try running ``h5perf_serial``
+- Load the module ``module load hdf5/1.12.1``
+- Now try ``h5perf_serial``
 
 ## array jobs
 
