@@ -382,8 +382,8 @@ Advice:
 
 ## Applying for Resources
 
-- Incite
-- Euro JU
+- [Incite](https://doeleadershipcomputing.org/)
+- [Euro Joint Undertaking](https://eurohpc-ju.europa.eu/supercomputers/supercomputers-access-calls_en)
 
 ## Further Resources 
 
