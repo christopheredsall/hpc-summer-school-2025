@@ -293,7 +293,30 @@ To change this you can add an extra directive ``#SBATCH --output=``
 - Load the module ``module load hdf5/1.12.1``
 - Now try ``h5perf_serial``
 
-## array jobs
+## Array Jobs
+
+- map array member ID to problem domain, needn't necessarily be 1-dim
+- array members need to be independant can execute concurrently and order isn't guaranteed
+
+```bash
+#!/bin/bash
+#SBATCH --account=TRAINING-CPU 
+#SBATCH --reservation=iccs-summer-school2
+#SBATCH --time=00:02:00
+#SBATCH --job-name=array-test
+#SBATCH --partition=icelake
+#SBATCH --nodes=1
+#SBATCH --cores=1
+
+echo "Hello from array member ${SLURM_ARRAY_TASK_ID}"
+```
+``sbatch --array=1-10 array-test.sh``
+
+## Exercise 6
+
+- submit an array job using the previous example
+- see how it appears in ``squeue --me``
+- examint the output files
 
 ## workflows
 
