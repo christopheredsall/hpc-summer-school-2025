@@ -316,9 +316,17 @@ echo "Hello from array member ${SLURM_ARRAY_TASK_ID}"
 
 - submit an array job using the previous example
 - see how it appears in ``squeue --me``
-- examint the output files
+- examine the output files
 
-## workflows
+## Workflows
+
+- Do not be tempted to write your own workflow orchestrator
+- Choose from one of the already existing ones, e.g.:
+
+ - [Snakemake](https://snakemake.readthedocs.io/en/stable/)
+ - [NextFlow](https://www.nextflow.io/docs/latest/)
+
+See [NERSC's advice](https://docs.nersc.gov/jobs/workflow/)
 
 ## programming HPC
 ### single node
