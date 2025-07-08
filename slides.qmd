@@ -15,7 +15,7 @@ format:
     render-on-save: true
 authors:
   - name: Chris Edsall
-    affiliations: ICCS/Cambridge
+    affiliations: Head of RSE <br> ICCS/Cambridge
     orcid: 0000-0001-6863-2184
   - name: Tom Meltzer
     orcid: 0000-0003-1740-9550
@@ -356,7 +356,29 @@ Donald Knuth (1974)
 
 ## IO profiling with Darshan
 
-## Green
+## Green HPC
+
+  - Green500 - Top500 divided by energy
+  - Calculators:
+    - [Green Algorithms](https://www.green-algorithms.org/)
+    - [How Much is Enough](https://chryswoods.github.io/howmuchisenough/)
+
+Advice:
+
+- Profile!
+- Use reduced precision
+- Design experiments well
+
+## Exercise
+
+- Go to the [Green Algorithms](https://www.green-algorithms.org/) website
+- Use the calculator to look at
+  - 3 hours
+  - 4 nodes (4 * 76 cores)
+  - Xeon Platinum 8268
+  - Memory 512 GB
+  - Location Europe / United Kingdom
+  - PUE 1.1
 
 ## Applying for Resources
 
