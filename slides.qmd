@@ -316,9 +316,17 @@ echo "Hello from array member ${SLURM_ARRAY_TASK_ID}"
 
 - submit an array job using the previous example
 - see how it appears in ``squeue --me``
-- examint the output files
+- examine the output files
 
-## workflows
+## Workflows
+
+- Do not be tempted to write your own workflow orchestrator
+- Choose from one of the already existing ones, e.g.:
+
+ - [Snakemake](https://snakemake.readthedocs.io/en/stable/)
+ - [NextFlow](https://www.nextflow.io/docs/latest/)
+
+See [NERSC's advice](https://docs.nersc.gov/jobs/workflow/)
 
 ## programming HPC
 ### single node
@@ -346,19 +354,27 @@ int main() {
   return 0;
 }
 ```
-
+Build with
+```{.bash}
+$ gcc -fopenmp -O3 hello.c -o hello.exe
+```
 ---
 
 ### hello OpenMP
 
-What happens when we run the following code?
+- Can you predict what the output will be with 4 threads?
 
-```{.bash}
-$ gcc -fopenmp -O3 hello.c -o hello.exe
-$ ./hello.exe
-```
+::: {.callout-note}
+## Note
+To change the number of threads we need to set environment variable `OMP_NUM_THREADS` e.g., `export OMP_NUM_THREADS=1` 
+:::
 
 ---
+
+### Exercise 7
+
+- Build the OpenMP hello world 
+- Run with varying numbers of threads
 
 ### hello OpenMP
 
@@ -384,12 +400,20 @@ hello from process 2
 cd example-code
 gcc -fopenmp -O3 pi.c -o pi.exe
 ```
-- What happens when you run with different numbers of threads?
 
-::: {.callout-note}
-## Note
-To change the number of threads we need to set environment variable `OMP_NUM_THREADS` e.g., `export OMP_NUM_THREADS=1` 
-:::
+### What might be causing this?
+
+- The problem is "pleasingly parallel"
+- Process pinning
+- NUMA
+  - Non-unifrom memory architecture
+  - differing latencies from cores to main memory
+- First touch placement policy.
+
+### ls-topo
+
+![](imgs/lstopo-login-q.png)
+
 
 ## programming HPC
 ### distributed (multi-node)
@@ -398,6 +422,61 @@ To change the number of threads we need to set environment variable `OMP_NUM_THR
 - One of the most common methods of distributed compute
 - **Distributed memory** multiprocessing programming model
 - Implementations (openMPI, MPICH, Intel MPI)
+
+---
+
+### MPI Hello World
+
+```c
+#include <mpi.h>
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    // Initialize the MPI environment
+    MPI_Init(NULL, NULL);
+
+    // Get the number of processes
+    int world_size;
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+    // Get the rank of the process
+    int world_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+    // Get the name of the processor
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    int name_len;
+    MPI_Get_processor_name(processor_name, &name_len);
+
+    // Print off a hello world message
+    printf("Hello world from processor %s, rank %d out of %d processors\n",
+           processor_name, world_rank, world_size);
+
+    // Finalize the MPI environment.
+    MPI_Finalize();
+} 
+```
+---
+
+### Building MPI PRograms
+
+Build:
+
+```bash
+mpicc mpi-hello.c -o mpi-hello.exe
+```
+
+Run a small test on login node:
+
+```
+mpiexec -np 4 ./mpi-hello.exe
+```
+
+### Exercise 8
+
+- Build ``mpi-hello.c``
+- Write a job script to run on 2 nodes, 3 cores per node
+  - (np whouls be 2*3 = 6)
 
 ## programming HPC
 ### GPU offloading
