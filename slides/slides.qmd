@@ -15,7 +15,7 @@ format:
     render-on-save: true
 authors:
   - name: Chris Edsall
-    affiliations: ICCS/Cambridge
+    affiliations: Head of RSE <br> ICCS/Cambridge
     orcid: 0000-0001-6863-2184
   - name: Tom Meltzer
     orcid: 0000-0003-1740-9550
@@ -309,9 +309,23 @@ To change this you can add an extra directive ``#SBATCH --output=``
   - openMP GPU offloading
   - [openAcc](https://www.openacc.org/)
 
-## the bad news amdhals law
+## The bad news: Amdahal's law
 
-## the good news Metcalf's law
+$S = 1 / (1 - p + p/s)$, where…
+
+- $S$ is the speedup of a process
+- $p$ is the proportion of a program that can be made parallel, and
+- $s$ is the speedup factor of the parallel portion. 
+
+## Amdahal's Law
+
+![](imgs/AmdahlsLaw.svg.png)
+
+## The good news: Gustafson's law
+
+- Mitigates the drawbacks of Amdahl's Law
+- Scale the problem size as you scale the number of nodes
+
 
 ## debugging
 
@@ -356,12 +370,34 @@ Donald Knuth (1974)
 
 ## IO profiling with Darshan
 
-## Green
+## Green HPC
+
+  - Green500 - Top500 divided by energy
+  - Calculators:
+    - [Green Algorithms](https://www.green-algorithms.org/)
+    - [How Much is Enough](https://chryswoods.github.io/howmuchisenough/)
+
+Advice:
+
+- Profile!
+- Use reduced precision
+- Design experiments well
+
+## Exercise
+
+- Go to the [Green Algorithms](https://www.green-algorithms.org/) website
+- Use the calculator to look at
+  - 3 hours
+  - 4 nodes (4 * 76 cores)
+  - Xeon Platinum 8268
+  - Memory 512 GB
+  - Location Europe / United Kingdom
+  - PUE 1.1
 
 ## Applying for Resources
 
-- Incite
-- Euro JU
+- [Incite](https://doeleadershipcomputing.org/)
+- [Euro Joint Undertaking](https://eurohpc-ju.europa.eu/supercomputers/supercomputers-access-calls_en)
 
 ## Further Resources 
 
