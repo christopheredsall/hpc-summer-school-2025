@@ -214,6 +214,7 @@ examples:
 The scheduler takes requests to run jobs with particular cluster resources, fits these in around other user's jobs according to some policy, launches the job, terminates the job if it is overrunning, does accounting.
 
 Examples:
+
 - PBSpro
 - Platform LSF
 - Flux
